@@ -23,7 +23,7 @@ define install_dependencies
 endef
 
 
-isntall:  ## Install minimalist requirements to run test requirements.test.txt
+install:  ## Install minimalist requirements to run test requirements.test.txt
 	$(call install_dependencies,test)
 
 install-dev:  ## Install requirements.dev.txt
