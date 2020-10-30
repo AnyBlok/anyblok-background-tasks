@@ -26,6 +26,7 @@ with open(
 requirements: "List[str]" = [
     "sqlalchemy",
     "anyblok",
+    "anyblok_mixins",
 ]
 
 test_requirements: "List[str]" = [
