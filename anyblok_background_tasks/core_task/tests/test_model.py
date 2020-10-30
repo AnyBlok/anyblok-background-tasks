@@ -1,5 +1,3 @@
-
-
 class TestExample:
     """ Test python api on AnyBlok models"""
 

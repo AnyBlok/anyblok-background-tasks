@@ -1,0 +1,28 @@
+language: python
+sudo: true
+
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+  - "3.9-dev"
+  - "nightly"
+
+matrix:
+  allow_failures:
+    - python: "3.9-dev"
+    - python: "nightly"
+
+services:
+  - postgresql
+
+install:
+  - make install
+  - pip install coveralls
+
+script:
+  - make lint
+  - make setup
+  - make test
+
+after_success: coveralls --data_file=.coverage --config_file=.coveragerc

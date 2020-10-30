@@ -1,6 +1,7 @@
+coverage
+psycopg2-binary
 pytest
 pytest-cov
-flake8
-WebTest
 sphinx
 sphinxcontrib-httpdomain
+pre-commit

@@ -15,22 +15,22 @@ export PRINT_HELP_PYSCRIPT
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-setup: ## install python project dependencies
+
+define install_dependencies
 	pip install --upgrade pip wheel
-	pip install .
+	pip install --upgrade -r requirements.$(1).txt
+	pip install -e .
+endef
+
+
+isntall:  ## Install minimalist requirements to run test requirements.test.txt
+	$(call install_dependencies,test)
+
+install-dev:  ## Install requirements.dev.txt
+	$(call install_dependencies,dev)
+
+setup: ## install python project dependencies for tests
 	anyblok_createdb -c app.cfg || anyblok_updatedb -c app.cfg
-
-setup-tests: ## install python project dependencies for tests
-	pip install --upgrade pip wheel
-	pip install --upgrade -r requirements.test.txt
-	pip install .
-	anyblok_createdb -c app.test.cfg || anyblok_updatedb -c app.test.cfg
-
-setup-dev: ## install python project dependencies for development
-	pip install --upgrade pip wheel
-	pip install --upgrade -r requirements.dev.txt
-	python setup.py develop
-	anyblok_createdb -c app.dev.cfg || anyblok_updatedb -c app.dev.cfg
 
 clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
 
@@ -52,12 +52,13 @@ clean-test: ## remove test artifacts
 	rm -fr .pytest_cache
 	rm -f .coverage
 
-lint: ## check style with flake8
-	flake8 anyblok_background_tasks
+lint: ## check style using pre-commit
+	pre-commit install
+	pre-commit run --all-files --show-diff-on-failure
 
 test: ## run tests
-	ANYBLOK_CONFIG_FILE=app.test.cfg py.test -v -s anyblok_background_tasks
+	ANYBLOK_CONFIG_FILE=app.cfg py.test -v -s anyblok_background_tasks
 
 documentation: ## generate documentation
-	anyblok_doc -c app.test.cfg --doc-format RST --doc-output doc/source/apidoc.rst
+	anyblok_doc -c app.cfg --doc-format RST --doc-output doc/source/apidoc.rst
 	make -C doc/ html

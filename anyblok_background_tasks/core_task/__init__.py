@@ -4,16 +4,15 @@ from anyblok.blok import Blok
 
 
 class Core_task(Blok):
-    """Core_task's Blok class definition
-    """
+    """Core_task's Blok class definition"""
+
     version = "0.1.0"
     author = "Pierre Verkest"
-    required = ['anyblok-core']
+    required = ["anyblok-core"]
 
     @classmethod
     def import_declaration_module(cls):
-        """Python module to import in the given order at start-up
-        """
+        """Python module to import in the given order at start-up"""
         from . import model  # noqa
 
     @classmethod
@@ -22,6 +21,7 @@ class Core_task(Blok):
         adding Blok at runtime
         """
         from . import model  # noqa
+
         reload(model)
 
     def update(self, latest):
