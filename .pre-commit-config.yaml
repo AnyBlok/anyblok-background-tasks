@@ -1,0 +1,31 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.3.0 # Use the ref you want to point at
+    hooks:
+      - id: check-yaml
+      - id: trailing-whitespace
+        exclude: .*\.js\.snap$
+      - id: end-of-file-fixer
+
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.8.4
+    hooks:
+      - id: flake8
+
+  - repo: https://github.com/ambv/black
+    rev: 20.8b1
+    hooks:
+      - id: black
+        args: ["-l", "80", "-t", "py38"]
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.6.4
+    hooks:
+      - id: isort
+        args: ["-p", "backend"]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: "v0.790" # Use the sha / tag you want to point at
+    hooks:
+      - id: mypy
+        exclude: doc/

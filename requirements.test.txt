@@ -1,0 +1,7 @@
+coverage
+psycopg2-binary
+pytest
+pytest-cov
+sphinx
+sphinxcontrib-httpdomain
+pre-commit
