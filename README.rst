@@ -1,3 +1,22 @@
+
+.. image:: https://travis-ci.org/AnyBlok/anyblok-background-tasks.svg?branch=main
+    :target: https://travis-ci.org/AnyBlok/anyblok-background-tasks
+    :alt: Build status
+
+.. image:: https://coveralls.io/repos/github/AnyBlok/anyblok-background-tasks/badge.svg?branch=main
+    :target: https://coveralls.io/github/AnyBlok/anyblok-background-tasks?branch=main
+    :alt: Coverage
+
+.. image:: https://img.shields.io/pypi/v/anyblok-background-tasks.svg
+   :target: https://pypi.python.org/pypi/anyblok-background-tasks/
+   :alt: Version status
+
+.. image:: https://readthedocs.org/projects/anyblok-background-tasks/badge/?version=latest
+    :alt: Documentation Status
+    :scale: 100%
+    :target: https://anyblok-background-tasks.readthedocs.org/en/latest/?badge=latest
+
+
 ========================
 Anyblok background tasks
 ========================
